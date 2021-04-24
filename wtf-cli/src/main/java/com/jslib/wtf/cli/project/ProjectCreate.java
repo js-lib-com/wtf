@@ -20,22 +20,22 @@ public class ProjectCreate extends Task {
 	@Option(names = { "-v", "--verbose" }, description = "Verbose printouts about created files.")
 	private boolean verbose;
 
-	@Parameters(index = "0", description = "Project name.")
-	private String name;
+	@Parameters(index = "0", description = "Project name.", paramLabel = "name")
+	private String projectName;
 
 	private TemplateProcessor template = new TemplateProcessor();
 
 	@Override
 	protected ExitCode exec() throws IOException {
 		Path workingDir = files.getWorkingDir();
-		Path projectDir = workingDir.resolve(name);
+		Path projectDir = workingDir.resolve(projectName);
 		if (files.exists(projectDir)) {
 			console.print("Project directory %s already existing.", projectDir);
 			console.print("Command abort.");
 			return ExitCode.ABORT;
 		}
 
-		console.print("Creating project %s.", name);
+		console.print("Creating project %s.", projectName);
 		files.createDirectory(projectDir);
 
 		Path homeDir = files.getPath(getHome());
@@ -53,10 +53,11 @@ public class ProjectCreate extends Task {
 		}
 
 		variables.put("author", console.input("developer name", config.get("user.name")));
-		variables.put("package", console.input("package name"));
+		variables.put("package", console.input("package name", projectName));
 		variables.put("package-path", variables.get("package").replace('.', '/'));
-		variables.put("title", console.input("site title"));
-		variables.put("description", console.input("project short description"));
+		variables.put("build", console.input("build directory", "build"));
+		variables.put("title", console.input("site title", projectName));
+		variables.put("description", console.input("project short description", projectName));
 		variables.put("locale", console.input("list of comma separated locale", "en"));
 
 		template.setTargetDir(projectDir.toFile());
@@ -74,6 +75,6 @@ public class ProjectCreate extends Task {
 	}
 
 	void setName(String name) {
-		this.name = name;
+		this.projectName = name;
 	}
 }

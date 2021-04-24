@@ -74,7 +74,7 @@ public class ProjectCreateTest {
 		when(workingDir.resolve("test")).thenReturn(projectDir);
 		when(projectDir.toFile()).thenReturn(mock(File.class));
 
-		when(console.input("package name")).thenReturn("com.jslib");
+		when(console.input("package name", "test")).thenReturn("com.jslib");
 		
 		task = new ProjectCreate();
 		task.setConfig(config);
@@ -113,8 +113,8 @@ public class ProjectCreateTest {
 		verify(console, times(1)).input("technology", (String)null);
 		verify(console, times(1)).input("project type");
 		verify(console, times(1)).input("developer name", (String)null);
-		verify(console, times(1)).input("site title");
-		verify(console, times(1)).input("project short description");
+		verify(console, times(1)).input("site title", "test");
+		verify(console, times(1)).input("project short description", "test");
 		verify(console, times(1)).input("list of comma separated locale", "en");
 	}
 
