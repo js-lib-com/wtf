@@ -34,9 +34,7 @@ public class ProjectCreate extends Task {
 			console.print("Command abort.");
 			return ExitCode.ABORT;
 		}
-
 		console.print("Creating project %s.", projectName);
-		files.createDirectory(projectDir);
 
 		Path homeDir = files.getPath(getHome());
 		Path templateDir = homeDir.resolve("template/project");
@@ -60,6 +58,7 @@ public class ProjectCreate extends Task {
 		variables.put("description", console.input("project short description", projectName));
 		variables.put("locale", console.input("list of comma separated locale", "en"));
 
+		files.createDirectory(projectDir);
 		template.setTargetDir(projectDir.toFile());
 		template.setVerbose(verbose);
 		template.exec(TemplateType.project, type, variables);

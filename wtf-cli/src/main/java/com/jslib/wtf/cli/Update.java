@@ -13,10 +13,13 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import javax.xml.xpath.XPathExpressionException;
+
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.xml.sax.SAXException;
 
 import js.format.FileSize;
 import picocli.CommandLine.Command;
@@ -131,7 +134,7 @@ public class Update extends Task {
 		}
 	}
 
-	private WebsUtil.File latestVersion(URI uri, Pattern filePattern) throws IOException, URISyntaxException {
+	private WebsUtil.File latestVersion(URI uri, Pattern filePattern) throws IOException, URISyntaxException, XPathExpressionException, SAXException {
 		WebsUtil.File mostRecentFile = null;
 		FileSize fileSizeFormatter = new FileSize();
 		DateTimeFormatter modificationTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");

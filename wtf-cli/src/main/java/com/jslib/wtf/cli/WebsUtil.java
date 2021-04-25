@@ -13,7 +13,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.xml.xpath.XPathExpressionException;
+
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.xml.sax.SAXException;
 
 import js.dom.Document;
 import js.dom.DocumentBuilder;
@@ -24,7 +27,7 @@ public class WebsUtil {
 	private HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
 	private DocumentBuilder documentBuilder = Classes.loadService(DocumentBuilder.class);
 
-	public Iterable<File> index(URI uri, Pattern fileNamePattern) throws IOException, URISyntaxException {
+	public Iterable<File> index(URI uri, Pattern fileNamePattern) throws IOException, URISyntaxException, SAXException, XPathExpressionException {
 		URL indexPageURL = uri.toURL();
 		Document indexPageDoc = documentBuilder.loadHTML(indexPageURL);
 
