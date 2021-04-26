@@ -3,6 +3,8 @@ package com.jslib.wtf.cli;
 import java.nio.file.Path;
 import java.util.Properties;
 
+import com.jslib.commons.cli.ExitCode;
+
 import picocli.CommandLine.Command;
 
 @Command(name = "setup", description = "Set up a new WTF install.")

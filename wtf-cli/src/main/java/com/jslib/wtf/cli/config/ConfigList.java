@@ -4,7 +4,7 @@ import static java.lang.String.format;
 
 import java.util.Map;
 
-import com.jslib.wtf.cli.ExitCode;
+import com.jslib.commons.cli.ExitCode;
 import com.jslib.wtf.cli.Task;
 
 import picocli.CommandLine.Command;

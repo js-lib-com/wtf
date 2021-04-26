@@ -19,9 +19,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.jslib.wtf.cli.Console;
-import com.jslib.wtf.cli.ExitCode;
-import com.jslib.wtf.cli.FilesUtil;
+import com.jslib.commons.cli.Console;
+import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.FilesUtil;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Model.CommandSpec;

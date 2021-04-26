@@ -8,6 +8,11 @@ import java.nio.file.FileSystems;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.jslib.commons.cli.Config;
+import com.jslib.commons.cli.Console;
+import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.FilesUtil;
+
 import js.lang.BugError;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;

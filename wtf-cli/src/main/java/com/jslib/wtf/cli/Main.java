@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.Properties;
 
+import com.jslib.commons.cli.Config;
+import com.jslib.commons.cli.Console;
+import com.jslib.commons.cli.Home;
 import com.jslib.wtf.cli.config.ConfigCommands;
 import com.jslib.wtf.cli.config.ConfigList;
 import com.jslib.wtf.cli.project.ProjectCommands;
@@ -17,6 +20,7 @@ import picocli.CommandLine.Command;
 @Command(name = "wtf", description = "Command line tools for Web Tiny Framework projects.", mixinStandardHelpOptions = true, version = "WTF, version 0.0.1-SNAPSHOT")
 public class Main {
 	public static void main(String... args) throws IOException {
+		Home.setMainClass(Main.class);
 		Properties globalProperties = new Properties();
 		Properties projectProperties = new Properties();
 		Config config = new Config(globalProperties, projectProperties);

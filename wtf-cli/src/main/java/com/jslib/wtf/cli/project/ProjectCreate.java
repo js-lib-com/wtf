@@ -5,10 +5,9 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.jslib.wtf.cli.ExitCode;
+import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.TemplateProcessor;
 import com.jslib.wtf.cli.Task;
-import com.jslib.wtf.cli.TemplateProcessor;
-import com.jslib.wtf.cli.TemplateType;
 
 import js.util.Strings;
 import picocli.CommandLine.Command;
@@ -61,7 +60,7 @@ public class ProjectCreate extends Task {
 		files.createDirectory(projectDir);
 		template.setTargetDir(projectDir.toFile());
 		template.setVerbose(verbose);
-		template.exec(TemplateType.project, type, variables);
+		template.exec("project", type, variables);
 
 		return ExitCode.SUCCESS;
 	}

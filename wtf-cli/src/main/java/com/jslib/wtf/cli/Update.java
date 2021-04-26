@@ -21,6 +21,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.xml.sax.SAXException;
 
+import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.WebsUtil;
+
 import js.format.FileSize;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;

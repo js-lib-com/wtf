@@ -23,12 +23,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.jslib.wtf.cli.Config;
-import com.jslib.wtf.cli.Console;
-import com.jslib.wtf.cli.ExitCode;
-import com.jslib.wtf.cli.FilesUtil;
-import com.jslib.wtf.cli.TemplateProcessor;
-import com.jslib.wtf.cli.TemplateType;
+import com.jslib.commons.cli.Config;
+import com.jslib.commons.cli.Console;
+import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.FilesUtil;
+import com.jslib.commons.cli.TemplateProcessor;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProjectCreateTest {
@@ -96,7 +95,7 @@ public class ProjectCreateTest {
 		verify(files, times(1)).createDirectory(projectDir);
 		verify(template, times(1)).setTargetDir(any(File.class));
 		verify(template, times(1)).setVerbose(false);
-		verify(template, times(1)).exec(eq(TemplateType.project), eq(null), any());
+		verify(template, times(1)).exec(eq("project"), eq(null), any());
 	}
 
 	@Test
