@@ -6,8 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.Home;
+import com.jslib.commons.cli.Task;
 import com.jslib.commons.cli.TemplateProcessor;
-import com.jslib.wtf.cli.Task;
 
 import js.util.Strings;
 import picocli.CommandLine.Command;
@@ -35,7 +36,7 @@ public class ProjectCreate extends Task {
 		}
 		console.print("Creating project %s.", projectName);
 
-		Path homeDir = files.getPath(getHome());
+		Path homeDir = files.getPath(Home.getPath());
 		Path templateDir = homeDir.resolve("template/project");
 
 		Map<String, String> variables = new HashMap<>();

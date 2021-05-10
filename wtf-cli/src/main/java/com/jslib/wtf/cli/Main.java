@@ -7,6 +7,7 @@ import java.util.Properties;
 import com.jslib.commons.cli.Config;
 import com.jslib.commons.cli.Console;
 import com.jslib.commons.cli.Home;
+import com.jslib.commons.cli.Task;
 import com.jslib.wtf.cli.config.ConfigCommands;
 import com.jslib.wtf.cli.config.ConfigList;
 import com.jslib.wtf.cli.project.ProjectCommands;

@@ -32,6 +32,7 @@
 	<modules>
 		<module>wtf-cli</module>
 		<module>wtf-assembly</module>
+		<module>wtf-update</module>
 	</modules>
 
 	<properties>
