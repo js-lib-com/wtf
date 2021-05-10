@@ -6,8 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.Home;
+import com.jslib.commons.cli.Task;
 import com.jslib.commons.cli.TemplateProcessor;
-import com.jslib.wtf.cli.Task;
 
 import js.util.Strings;
 import picocli.CommandLine.Command;
@@ -35,10 +36,11 @@ public class ProjectCreate extends Task {
 		}
 		console.print("Creating project %s.", projectName);
 
-		Path homeDir = files.getPath(getHome());
+		Path homeDir = files.getPath(Home.getPath());
 		Path templateDir = homeDir.resolve("template/project");
 
 		Map<String, String> variables = new HashMap<>();
+		variables.put("projectName", projectName);
 		variables.put("technology", console.input("technology", config.get("project.technology")));
 		String type = console.input("project type");
 
@@ -51,7 +53,7 @@ public class ProjectCreate extends Task {
 
 		variables.put("author", console.input("developer name", config.get("user.name")));
 		variables.put("package", console.input("package name", projectName));
-		variables.put("package-path", variables.get("package").replace('.', '/'));
+		variables.put("packagePath", variables.get("package").replace('.', '/'));
 		variables.put("build", console.input("build directory", "build"));
 		variables.put("title", console.input("site title", projectName));
 		variables.put("description", console.input("project short description", projectName));

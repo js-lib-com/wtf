@@ -32,6 +32,7 @@
 	<modules>
 		<module>wtf-cli</module>
 		<module>wtf-assembly</module>
+		<module>wtf-update</module>
 	</modules>
 
 	<properties>
@@ -51,6 +52,13 @@
 			<groupId>com.js-lib</groupId>
 			<artifactId>js-dom</artifactId>
 			<version>1.2.0-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.js-lib</groupId>
+			<artifactId>js-log4j</artifactId>
+			<version>1.3.0-SNAPSHOT</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

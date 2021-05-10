@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 import com.jslib.commons.cli.ExitCode;
-import com.jslib.wtf.cli.Task;
+import com.jslib.commons.cli.Task;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Model.CommandSpec;

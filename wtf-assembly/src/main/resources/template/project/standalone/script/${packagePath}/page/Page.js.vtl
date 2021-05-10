@@ -1,4 +1,4 @@
-$package("${package}.page");
+#[[$package]]#("${package}.page");
 
 /**
  * Pages base class.
@@ -9,7 +9,7 @@ $package("${package}.page");
  * @constructor Construct an instance of a page class.
  */
 ${package}.page.Page = function() {
-	this.$super();
+	#[[this.$super();]]#
 
 	this.ERRORS = ["", // SUCCESS
 		"Business error #1.", // BUSINESS_ERROR_1
@@ -19,13 +19,13 @@ ${package}.page.Page = function() {
 
 ${package}.page.Page.prototype = {
 	onServerFail(er) {
-		$error("${package}.page.Page#onServerFail", "%s: %s", er.cause, er.message);
+		#[[$error]]#("${package}.page.Page#onServerFail", "%s: %s", er.cause, er.message);
 		js.ua.System.error("Server error. Please contact administrator.");
 	},
 
 	onBusinessFail(er) {
 		if (er.errorCode > this.ERRORS.length) {
-			this.$super("onBusinessFail", er);
+			#[[this.$super("onBusinessFail", er);]]#
 			return;
 		}
 		js.ua.System.error(this.ERRORS[er.errorCode]);
@@ -34,10 +34,10 @@ ${package}.page.Page.prototype = {
 	/**
 	 * Class string representation.
 	 * 
-	 * @return this class string representation.
+	 * @return {string} this class string representation.
 	 */
 	toString : function() {
 		return "${package}.page.Page";
 	}
 };
-$extends(${package}.page.Page, js.ua.Page);
+#[[$extends]]#(${package}.page.Page, js.ua.Page);

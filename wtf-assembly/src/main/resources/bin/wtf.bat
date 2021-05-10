@@ -3,5 +3,11 @@
 
 @set "bin=%home%\bin\*"
 @set "lib=%home%\lib\*"
+@set "logs=%home%\logs\"
 
-@java -cp "%bin%;%lib%" com.jslib.wtf.cli.Main %*
+@set "lock=%home%.lock"
+@copy /y NUL %lock% >NUL
+
+@java -cp "%bin%;%lib%" -DLOGS_DIR=%logs% com.jslib.wtf.cli.Main %*
+
+@del %lock%

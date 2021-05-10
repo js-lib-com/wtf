@@ -15,12 +15,12 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
 @Command(name = "update", description = "Update WTF install.")
-public class Update extends Task {
+public class Updatex extends Task {
 
-	private static final URI DISTRIBUTION_URI = URI.create("http://maven.js-lib.com/com/js-lib/wtf-assembly/");
+	private static final URI DISTRIBUTION_URI = URI.create("http://maven.js-lib.com/com/js-lib/wood-assembly/");
 	private static final Pattern ARCHIVE_DIRECTORY_PATTERN = Pattern.compile("^\\d+\\.\\d+\\.\\d*(-[a-z0-9]+)?/$", Pattern.CASE_INSENSITIVE);
-	private static final Pattern ARCHIVE_FILE_PATTERN = Pattern.compile("^wtf-assembly.+\\.zip$");
-	private static final Pattern UPDATER_FILE_PATTERN = Pattern.compile("^wtf-update.+\\.jar$");
+	private static final Pattern ARCHIVE_FILE_PATTERN = Pattern.compile("^wood-assembly.+\\.zip$");
+	private static final Pattern UPDATER_FILE_PATTERN = Pattern.compile("^wood-update.+\\.jar$");
 
 	@Option(names = { "-f", "--force" }, description = "Force update regardless release date.")
 	private boolean force;
@@ -32,19 +32,19 @@ public class Update extends Task {
 	@Override
 	protected ExitCode exec() throws Exception {
 		if (verbose) {
-			console.print("Checking WTF assemblies repository...");
+			console.print("Checking WOOD assemblies repository...");
 		}
 
 		WebsUtil.File assemblyDir = webs.latestVersion(DISTRIBUTION_URI, ARCHIVE_DIRECTORY_PATTERN, verbose);
 		if (assemblyDir == null) {
-			console.print("Empty WTF assemblies repository %s.", DISTRIBUTION_URI);
+			console.print("Empty WOOD assemblies repository %s.", DISTRIBUTION_URI);
 			console.print("Command abort.");
 			return ExitCode.ABORT;
 		}
 
 		WebsUtil.File assemblyFile = webs.latestVersion(assemblyDir.getURI(), ARCHIVE_FILE_PATTERN, verbose);
 		if (assemblyFile == null) {
-			console.print("Invalid WTF assembly version %s. No assembly found.", assemblyDir.getURI());
+			console.print("Invalid WOOD assembly version %s. No assembly found.", assemblyDir.getURI());
 			console.print("Command abort.");
 			return ExitCode.ABORT;
 		}
@@ -53,37 +53,37 @@ public class Update extends Task {
 		Path binariesDir = homeDir.resolve("bin");
 		Path updaterJar = files.getFileByNamePattern(binariesDir, UPDATER_FILE_PATTERN);
 		if (updaterJar == null) {
-			console.print("Corrupt WTF install. Missing updater.");
+			console.print("Corrupt WOOD install. Missing updater.");
 			console.print("Command abort.");
 			return ExitCode.ABORT;
 		}
 
-		// uses wtf.properties file to detect last update time
-		Path propertiesFile = homeDir.resolve("bin/wtf.properties");
+		// uses wood.properties file to detect last update time
+		Path propertiesFile = homeDir.resolve("bin/wood.properties");
 		if (files.exists(propertiesFile)) {
 			if (!force && !assemblyFile.getModificationTime().isAfter(files.getModificationTime(propertiesFile))) {
-				console.print("Current WTF install is updated.");
+				console.print("WOOD has no updates available.");
 				console.print("Command abort.");
 				return ExitCode.ABORT;
 			}
 		}
 
-		console.print("Updating WTF install from %s...", assemblyFile.getName());
+		console.print("Updating WOOD install from %s...", assemblyFile.getName());
 		if (!yes && !console.confirm("Please confirm: yes | [no]", "yes")) {
 			console.print("User cancel.");
 			return ExitCode.CANCEL;
 		}
 
-		console.print("Downloading WTF assembly %s...", assemblyFile.getName());
+		console.print("Downloading WOOD assembly %s...", assemblyFile.getName());
 		Path downloadFile = homeDir.resolve(assemblyFile.getName());
 		webs.download(assemblyFile, downloadFile, verbose);
 
-		console.print("Download complete. Start WTF install update.");
+		console.print("Download complete. Start WOOD install update.");
 		List<String> command = new ArrayList<>();
 		command.add("java");
 		command.add("-cp");
 		command.add(updaterJar.toAbsolutePath().toString());
-		command.add("com.jslib.wtf.update.Main");
+		command.add("js.wood.update.Main");
 		if (verbose) {
 			command.add("--verbose");
 		}

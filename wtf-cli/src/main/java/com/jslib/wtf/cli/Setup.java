@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.util.Properties;
 
 import com.jslib.commons.cli.ExitCode;
+import com.jslib.commons.cli.Home;
+import com.jslib.commons.cli.Task;
 
 import picocli.CommandLine.Command;
 
@@ -13,7 +15,7 @@ public class Setup extends Task {
 	protected ExitCode exec() throws Exception {
 		console.print("WTF setup.");
 
-		Path home = files.getPath(getHome());
+		Path home = files.getPath(Home.getPath());
 		Properties properties = config.getGlobalProperties();
 		properties.put("wtf.home", home.toString());
 		properties.put("repository.dir", home.resolve("repository").toString());
