@@ -1,0 +1,8 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/apps/${projectName}/ServiceWorker.js', { scope: '/apps/${projectName}/' })
+        .then(registration => console.log('Service worker registration succeeded: ', registration))
+        .catch(error => console.log('Service worker registration failed: ', error));
+} else {
+    console.log('Service workers are not supported.');
+}
