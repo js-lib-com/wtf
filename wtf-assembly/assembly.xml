@@ -17,10 +17,18 @@
 			<directory>target/template</directory>
 			<outputDirectory>/template</outputDirectory>
 		</fileSet>
+		<fileSet>
+			<directory>../doc</directory>
+			<outputDirectory>manual</outputDirectory>
+		</fileSet>
 	</fileSets>
 	<files>
 		<file>
 			<source>../wtf-cli/target/wtf-cli-${project.version}.jar</source>
+			<outputDirectory>bin</outputDirectory>
+		</file>
+		<file>
+			<source>../wtf-update/target/wtf-update-${project.version}.jar</source>
 			<outputDirectory>bin</outputDirectory>
 		</file>
 	</files>

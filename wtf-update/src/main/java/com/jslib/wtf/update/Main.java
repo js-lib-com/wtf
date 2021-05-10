@@ -114,7 +114,7 @@ public class Main {
 	private void cleanDirectory(File dir, List<File> excludes) throws IOException {
 		File[] files = dir.listFiles();
 		if (files == null) {
-			throw new IOException(format("Fail to list files from %s", dir));
+			return;
 		}
 
 		for (File file : files) {
