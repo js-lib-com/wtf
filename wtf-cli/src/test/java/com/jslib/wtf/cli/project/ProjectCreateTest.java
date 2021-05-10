@@ -27,6 +27,7 @@ import com.jslib.commons.cli.Config;
 import com.jslib.commons.cli.Console;
 import com.jslib.commons.cli.ExitCode;
 import com.jslib.commons.cli.FilesUtil;
+import com.jslib.commons.cli.Home;
 import com.jslib.commons.cli.TemplateProcessor;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -65,6 +66,8 @@ public class ProjectCreateTest {
 
 	@Before
 	public void beforeTest() throws IOException {
+		Home.setPath("home");
+		
 		when(files.getPath("home")).thenReturn(homeDir);
 		when(homeDir.resolve("template/project")).thenReturn(templateDir);
 		when(templateDir.resolve(anyString())).thenReturn(templateFile);
