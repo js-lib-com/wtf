@@ -15,8 +15,8 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "create", description = "Create named project into current directory.")
-public class ProjectCreate extends Task {
+@Command(name = "project", description = "Create named project into current directory.")
+public class CreateProject extends Task {
 	@Option(names = { "-v", "--verbose" }, description = "Verbose printouts about created files.")
 	private boolean verbose;
 

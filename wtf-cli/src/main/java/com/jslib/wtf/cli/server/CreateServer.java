@@ -17,8 +17,8 @@ import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
-@Command(name = "create", description = "Create server.")
-public class ServerCreate extends Task {
+@Command(name = "server", description = "Create server.")
+public class CreateServer extends Task {
 	@Spec
 	private CommandSpec commandSpec;
 

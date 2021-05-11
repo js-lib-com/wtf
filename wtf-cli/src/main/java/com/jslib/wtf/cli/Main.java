@@ -11,9 +11,8 @@ import com.jslib.commons.cli.Task;
 import com.jslib.wtf.cli.config.ConfigCommands;
 import com.jslib.wtf.cli.config.ConfigList;
 import com.jslib.wtf.cli.icons.CreateIcons;
-import com.jslib.wtf.cli.project.ProjectCommands;
-import com.jslib.wtf.cli.project.ProjectCreate;
-import com.jslib.wtf.cli.project.ProjectDestroy;
+import com.jslib.wtf.cli.project.CreateProject;
+import com.jslib.wtf.cli.server.CreateServer;
 
 import js.lang.BugError;
 import picocli.CommandLine;
@@ -47,17 +46,14 @@ public class Main {
 	private void run(String... args) {
 		CommandLine createCommands = new CommandLine(new CreateCommands());
 		createCommands.addSubcommand(task(CreateIcons.class));
-
-		CommandLine projectCommands = new CommandLine(ProjectCommands.class);
-		projectCommands.addSubcommand(task(ProjectCreate.class));
-		projectCommands.addSubcommand(task(ProjectDestroy.class));
+		createCommands.addSubcommand(task(CreateProject.class));
+		createCommands.addSubcommand(task(CreateServer.class));
 
 		CommandLine configCommands = new CommandLine(new ConfigCommands());
 		configCommands.addSubcommand(task(ConfigList.class));
 
 		CommandLine commandLine = new CommandLine(this);
 		commandLine.addSubcommand(createCommands);
-		commandLine.addSubcommand(projectCommands);
 		commandLine.addSubcommand(configCommands);
 		commandLine.addSubcommand(task(Update.class));
 		commandLine.addSubcommand(task(Setup.class));

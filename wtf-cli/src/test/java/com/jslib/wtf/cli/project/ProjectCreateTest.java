@@ -62,7 +62,7 @@ public class ProjectCreateTest {
 	@Mock
 	private Path projectDir;
 
-	private ProjectCreate task;
+	private CreateProject task;
 
 	@Before
 	public void beforeTest() throws IOException {
@@ -78,7 +78,7 @@ public class ProjectCreateTest {
 
 		when(console.input("package name", "test")).thenReturn("com.jslib");
 		
-		task = new ProjectCreate();
+		task = new CreateProject();
 		task.setConfig(config);
 		task.setConsole(console);
 		task.setFiles(files);
