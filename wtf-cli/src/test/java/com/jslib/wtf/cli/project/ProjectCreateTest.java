@@ -1,10 +1,12 @@
 package com.jslib.wtf.cli.project;
 
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -76,7 +78,7 @@ public class ProjectCreateTest {
 		when(workingDir.resolve("test")).thenReturn(projectDir);
 		when(projectDir.toFile()).thenReturn(mock(File.class));
 
-		when(console.input("package name", "test")).thenReturn("com.jslib");
+		when(console.input(eq("package name"), anyString())).thenReturn("com.jslib");
 		
 		task = new CreateProject();
 		task.setConfig(config);
@@ -98,7 +100,7 @@ public class ProjectCreateTest {
 		verify(files, times(1)).createDirectory(projectDir);
 		verify(template, times(1)).setTargetDir(any(File.class));
 		verify(template, times(1)).setVerbose(false);
-		verify(template, times(1)).exec(eq("project"), eq(null), any());
+		verify(template, times(1)).exec(isNull(), any());
 	}
 
 	@Test
@@ -109,11 +111,10 @@ public class ProjectCreateTest {
 		task.exec();
 
 		// then
-		verify(config, times(1)).get("project.technology");
 		verify(config, times(1)).get("user.name");
 		
-		verify(console, times(1)).input("technology", (String)null);
-		verify(console, times(1)).input("project type");
+		verify(console, times(1)).input("technology", "");
+		verify(console, times(1)).input("project type", "");
 		verify(console, times(1)).input("developer name", (String)null);
 		verify(console, times(1)).input("site title", "test");
 		verify(console, times(1)).input("project short description", "test");

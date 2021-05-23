@@ -21,48 +21,63 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
+					<finalName>wtf</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
 				<executions>
 					<execution>
-						<id>project-jslib</id>
+						<id>js-lib-app</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>js-lib</finalName>
+							<finalName>js-lib/app</finalName>
 							<outputDirectory>target/template/project</outputDirectory>
 							<descriptors>
-								<descriptor>src/main/resources/template/project/js-lib.xml</descriptor>
+								<descriptor>src/main/resources/template/project/js-lib/app.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
 					<execution>
-						<id>project-standalone</id>
+						<id>js-lib-java</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>standalone</finalName>
+							<finalName>js-lib/java</finalName>
 							<outputDirectory>target/template/project</outputDirectory>
 							<descriptors>
-								<descriptor>src/main/resources/template/project/standalone.xml</descriptor>
+								<descriptor>src/main/resources/template/project/js-lib/java.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
 					<execution>
-						<id>project-vanilla</id>
+						<id>js-lib-simple</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>vanilla</finalName>
+							<finalName>js-lib/simple</finalName>
 							<outputDirectory>target/template/project</outputDirectory>
 							<descriptors>
-								<descriptor>src/main/resources/template/project/vanilla.xml</descriptor>
+								<descriptor>src/main/resources/template/project/js-lib/simple.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>w3c-vanilla</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<finalName>w3c/vanilla</finalName>
+							<outputDirectory>target/template/project</outputDirectory>
+							<descriptors>
+								<descriptor>src/main/resources/template/project/w3c/vanilla.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>

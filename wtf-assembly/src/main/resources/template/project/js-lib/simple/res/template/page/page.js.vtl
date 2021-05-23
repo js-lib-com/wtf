@@ -1,0 +1,30 @@
+#[[$package]]#("${package}");
+
+/**
+ * Pages base class.
+ * 
+ * @author ${author}
+ * @since 1.0
+ * 
+ * @constructor Construct an instance of a page class.
+ */
+${package}.Page = function() {
+	#[[this.$super();]]#
+};
+
+${package}.Page.prototype = {
+	onServerFail(er) {
+		#[[$error]]#("${package}.Page#onServerFail", "%s: %s", er.cause, er.message);
+		js.ua.System.error("Server error. Please contact administrator.");
+	},
+
+	/**
+	 * Class string representation.
+	 * 
+	 * @return {string} this class string representation.
+	 */
+	toString : function() {
+		return "${package}.Page";
+	}
+};
+#[[$extends]]#(${package}.Page, js.ua.Page);

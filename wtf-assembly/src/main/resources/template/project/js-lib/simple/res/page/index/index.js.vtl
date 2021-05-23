@@ -1,0 +1,25 @@
+#[[$package]]#("${package}");
+
+/**
+ * Index page class.
+ * 
+ * @author ${author}
+ * @since 1.0
+ * 
+ * @constructor Construct an instance of home page class.
+ */
+${package}.Index = function() {
+	#[[this.$super();]]#
+};
+
+${package}.Index.prototype = {
+	/**
+	 * Class string representation.
+	 * 
+	 * @return {string} this class string representation.
+	 */
+	toString : function() {
+		return "${package}.Index";
+	}
+};
+#[[$extends]]#(${package}.Index, ${package}.Page);

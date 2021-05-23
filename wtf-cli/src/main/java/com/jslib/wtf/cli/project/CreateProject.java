@@ -40,29 +40,33 @@ public class CreateProject extends Task {
 		Path templateDir = homeDir.resolve("template/project");
 
 		Map<String, String> variables = new HashMap<>();
-		variables.put("projectName", projectName);
-		variables.put("technology", console.input("technology", config.get("project.technology")));
-		String type = console.input("project type");
+		String technology = console.input("technology", Strings.join(files.getFileNames(templateDir), ", "));
+		variables.put("technology", technology);
+		String projectType = console.input("project type", Strings.join(files.getFileNames(templateDir.resolve(technology)), ", "));
 
-		Path templateFile = templateDir.resolve(Strings.concat(type, ".zip"));
+		Path templateFile = templateDir.resolve(Strings.concat(technology, '/', projectType, ".zip"));
 		if (!files.exists(templateFile)) {
 			console.print("Missing template %s.", templateFile);
 			console.print("Command abort.");
 			return ExitCode.ABORT;
 		}
 
+		variables.put("projectName", projectName);
 		variables.put("author", console.input("developer name", config.get("user.name")));
-		variables.put("package", console.input("package name", projectName));
+		String packageName = "simple".equals(projectType) ? projectName : Strings.concat(config.get("base.package"), '.', projectName);
+		variables.put("package", console.input("package name", packageName));
 		variables.put("packagePath", variables.get("package").replace('.', '/'));
 		variables.put("build", console.input("build directory", "build"));
 		variables.put("title", console.input("site title", projectName));
 		variables.put("description", console.input("project short description", projectName));
 		variables.put("locale", console.input("list of comma separated locale", "en"));
+		variables.put("runtimeName", console.input("runtime name", "test"));
+		variables.put("runtimePort", console.input("runtime port", "8080"));
 
 		files.createDirectory(projectDir);
 		template.setTargetDir(projectDir.toFile());
 		template.setVerbose(verbose);
-		template.exec("project", type, variables);
+		template.exec(templateFile.toFile(), variables);
 
 		return ExitCode.SUCCESS;
 	}

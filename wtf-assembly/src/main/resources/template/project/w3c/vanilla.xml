@@ -9,7 +9,7 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>src/main/resources/template/project/js-lib</directory>
+			<directory>src/main/resources/template/project/w3c/vanilla</directory>
 			<outputDirectory>/</outputDirectory>
 		</fileSet>
 	</fileSets>
