@@ -1,5 +1,5 @@
-#[[$package]]#("${package}");
-
+#if($package)#[[$package]]#("${package}");
+#end
 /**
  * Index page class.
  * 
@@ -8,18 +8,18 @@
  * 
  * @constructor Construct an instance of home page class.
  */
-${package}.Index = function() {
+#if($package)#${package}.#endIndex = function() {
 	#[[this.$super();]]#
 };
 
-${package}.Index.prototype = {
+#if($package)#${package}.#endIndex.prototype = {
 	/**
 	 * Class string representation.
 	 * 
 	 * @return {string} this class string representation.
 	 */
 	toString : function() {
-		return "${package}.Index";
+		return "#if($package)#${package}.#endIndex";
 	}
 };
-#[[$extends]]#(${package}.Index, ${package}.Page);
+#[[$extends]]#(#if($package)#${package}.#endIndex, #if($package)#${package}.#endPage);

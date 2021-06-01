@@ -1,5 +1,5 @@
-#[[$package]]#("${package}.page");
-
+#if($package)##[[$package]]#("${package}.page");
+#end
 /**
  * Index page class.
  * 
@@ -8,20 +8,20 @@
  * 
  * @constructor Construct an instance of home page class.
  */
-${package}.page.Index = function() {
+#if($package)#${package}.#endpage.Index = function() {
 	#[[this.$super();]]#
 };
 
-${package}.page.Index.prototype = {
+#if($package)#${package}.#endpage.Index.prototype = {
 	/**
 	 * Class string representation.
 	 * 
 	 * @return {string} this class string representation.
 	 */
 	toString : function() {
-		return "${package}.page.Index";
+		return "#if($package)#${package}.#endpage.Index";
 	}
 };
-#[[$extends]]#(${package}.page.Index, ${package}.page.Page);
+#[[$extends]]#(#if($package)#${package}.#endpage.Index, #if($package)#${package}.#endpage.Page);
 
-WinMain.createPage(${package}.page.Index);
+WinMain.createPage(#if($package)#${package}.#endpage.Index);

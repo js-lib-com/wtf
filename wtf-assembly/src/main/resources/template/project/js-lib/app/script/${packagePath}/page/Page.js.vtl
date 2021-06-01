@@ -1,5 +1,5 @@
-#[[$package]]#("${package}.page");
-
+#if($package)##[[$package]]#("${package}.page");
+#end
 /**
  * Pages base class.
  * 
@@ -8,7 +8,7 @@
  * 
  * @constructor Construct an instance of a page class.
  */
-${package}.page.Page = function() {
+#if($package)#${package}.#endpage.Page = function() {
 	#[[this.$super();]]#
 
 	this.ERRORS = ["", // SUCCESS
@@ -17,9 +17,9 @@ ${package}.page.Page = function() {
 	];
 };
 
-${package}.page.Page.prototype = {
+#if($package)#${package}.#endpage.Page.prototype = {
 	onServerFail(er) {
-		#[[$error]]#("${package}.page.Page#onServerFail", "%s: %s", er.cause, er.message);
+		#[[$error]]#("#if($package)#${package}.#endpage.Page#onServerFail", "%s: %s", er.cause, er.message);
 		js.ua.System.error("Server error. Please contact administrator.");
 	},
 
@@ -37,7 +37,7 @@ ${package}.page.Page.prototype = {
 	 * @return {string} this class string representation.
 	 */
 	toString : function() {
-		return "${package}.page.Page";
+		return "#if($package)#${package}.#endpage.Page";
 	}
 };
-#[[$extends]]#(${package}.page.Page, js.ua.Page);
+#[[$extends]]#(#if($package)#${package}.#endpage.Page, js.ua.Page);
