@@ -9,7 +9,7 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>src/main/resources/template/project/w3c/vanilla</directory>
+			<directory>src/main/resources/template/project/w3c/simple</directory>
 			<outputDirectory>/</outputDirectory>
 		</fileSet>
 	</fileSets>

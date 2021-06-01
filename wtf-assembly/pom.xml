@@ -68,16 +68,16 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>w3c-vanilla</id>
+						<id>w3c-simple</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
-							<finalName>w3c/vanilla</finalName>
+							<finalName>w3c/simple</finalName>
 							<outputDirectory>target/template/project</outputDirectory>
 							<descriptors>
-								<descriptor>src/main/resources/template/project/w3c/vanilla.xml</descriptor>
+								<descriptor>src/main/resources/template/project/w3c/simple.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>

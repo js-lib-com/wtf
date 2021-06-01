@@ -1,6 +1,5 @@
 package com.jslib.wtf.cli;
 
-import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.Properties;
 
@@ -20,7 +19,7 @@ import picocli.CommandLine.Command;
 
 @Command(name = "wtf", description = "Command line tools for Web Tiny Framework projects.", mixinStandardHelpOptions = true, version = "WTF, version 0.0.1-SNAPSHOT")
 public class Main {
-	public static void main(String... args) throws IOException {
+	public static void main(String... args) throws Exception {
 		Home.setMainClass(Main.class);
 		Properties globalProperties = new Properties();
 		Properties projectProperties = new Properties();
