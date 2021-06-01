@@ -1,5 +1,9 @@
-#if($package)##[[$package]]#("${package}.page");
+#if($package)
+#[[$package]]#("${package}.page");
+#else
+#[[$package]]#("page");
 #end
+
 /**
  * Index page class.
  * 
@@ -8,20 +12,40 @@
  * 
  * @constructor Construct an instance of home page class.
  */
-#if($package)#${package}.#endpage.Index = function() {
+#if($package) 
+${package}.page.Index = function() {
+#else
+page.Index = function() {
+#end
 	#[[this.$super();]]#
 };
 
-#if($package)#${package}.#endpage.Index.prototype = {
+#if($package)
+${package}.page.Index.prototype = {
+#else
+page.Index.prototype = {
+#end
 	/**
 	 * Class string representation.
 	 * 
 	 * @return {string} this class string representation.
 	 */
 	toString : function() {
-		return "#if($package)#${package}.#endpage.Index";
+#if($package)	
+		return "${package}.page.Index";
+#else
+		return "page.Index";
+#end		
 	}
 };
-#[[$extends]]#(#if($package)#${package}.#endpage.Index, #if($package)#${package}.#endpage.Page);
+#if($package)
+#[[$extends]]#(${package}.page.Index, ${package}.page.Page);
+#else
+#[[$extends]]#(page.Index, page.Page);
+#end
 
-WinMain.createPage(#if($package)#${package}.#endpage.Index);
+#if($package)
+WinMain.createPage(${package}.page.Index);
+#else
+WinMain.createPage(page.Index);
+#end

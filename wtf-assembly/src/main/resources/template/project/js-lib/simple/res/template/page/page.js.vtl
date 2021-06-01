@@ -1,4 +1,5 @@
-#if($package)##[[$package]]#("${package}");
+#if($package)#[[$package]]#("${package}");
+
 #end
 /**
  * Pages base class.
@@ -8,13 +9,13 @@
  * 
  * @constructor Construct an instance of a page class.
  */
-#if($package)#${package}.#endPage = function() {
+#if($package)${package}.#endPage = function() {
 	#[[this.$super();]]#
 };
 
-#if($package)#${package}.#endPage.prototype = {
+#if($package)${package}.#endPage.prototype = {
 	onServerFail(er) {
-		#[[$error]]#("#if($package)#${package}.#endPage#onServerFail", "%s: %s", er.cause, er.message);
+		#[[$error]]#("#if($package)${package}.#end#[[Page#onServerFail]]#", "%s: %s", er.cause, er.message);
 		js.ua.System.error("Server error. Please contact administrator.");
 	},
 
@@ -24,7 +25,7 @@
 	 * @return {string} this class string representation.
 	 */
 	toString : function() {
-		return "#if($package)#${package}.#endPage";
+		return "#if($package)${package}.#endPage";
 	}
 };
-#[[$extends]]#(#if($package)#${package}.#endPage, js.ua.Page);
+#[[$extends]]#(#if($package)${package}.#endPage, js.ua.Page);

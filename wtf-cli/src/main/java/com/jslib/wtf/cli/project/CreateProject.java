@@ -53,11 +53,10 @@ public class CreateProject extends Task {
 
 		variables.put("projectName", projectName);
 		variables.put("author", console.input("developer name", config.get("user.name")));
-		String packageName = "simple".equals(projectType) ? projectName : Strings.concat(config.get("base.package"), '.', projectName);
-		variables.put("package", console.input("package name", packageName));
+		variables.put("package", console.input("package name"));
 		variables.put("packagePath", variables.get("package").replace('.', '/'));
 		variables.put("build", console.input("build directory", "build"));
-		variables.put("title", console.input("site title", projectName));
+		variables.put("display", console.input("site display", projectName));
 		variables.put("description", console.input("project short description", projectName));
 		variables.put("locale", console.input("list of comma separated locale", "en"));
 		variables.put("runtimeName", console.input("runtime name", "test"));

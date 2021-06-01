@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-	<author>${author}</author>
-	<title>@string/app-name</title>
-	<description>@string/app-description</description>
+	<name>${projectName}</name>
+	<technology>${technology}</technology>
+	<package>${package}</package>
+	<operators>DATA_ATTR</operators>
+	<build-dir>build</build-dir>
+		
+	<authors>${author}</authors>
+	<display>${display}</display>
+	<description>${description}</description>
+	<favicon>res/asset/favicon.ico</favicon>
 	<manifest>manifest.json</manifest>
 	<service-worker>script/ServiceWorker.js</service-worker>
-	<favicon>res/asset/favicon.ico</favicon>
 	<locale>${locale}</locale>
-	<naming>DATA_ATTR</naming>
 
 	<media-queries>
 		<media-query alias="portrait" expression="orientation: portrait" />
@@ -21,23 +26,9 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"></meta>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"></meta>
-
-		<meta property="og:title" content="@string/app-name"></meta>
-		<meta property="og:description" content="@string/app-description"></meta>
-		<meta property="og:image" content="@image/app-featured"></meta>
-		<meta property="og:url" content="http://fables.kids-cademy.com/"></meta>
-		<meta name="twitter:card" content="@image/app-featured"></meta>
-
-		<meta name="theme-color" content="white"></meta>
-  		<meta name="apple-mobile-web-app-capable" content="yes"></meta>
-  		<meta name="apple-mobile-web-app-status-bar-style" content="black"></meta>
-  		<meta name="apple-mobile-web-app-title" content="@string/app-name"></meta>
-  		<meta name="msapplication-TileImage" content="@image/app-icon-144"></meta>
-  		<meta name="msapplication-TileColor" content="#FFFFFF"></meta>
-
-		<link rel="apple-touch-icon" href="@image/app-icon-152"></link>
+		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css"></link>
-
+		
 		<script src="script/ServiceLoader.js" type="text/javascript" defer="false" embedded="true"></script>
 	</head>
 </project>
