@@ -93,6 +93,9 @@ public class Update extends Task {
 				console.print('.');
 			}
 		});
+		if (verbose) {
+			console.crlf();
+		}
 
 		console.print("Download complete. Start WTF install update.");
 		List<String> command = new ArrayList<>();
