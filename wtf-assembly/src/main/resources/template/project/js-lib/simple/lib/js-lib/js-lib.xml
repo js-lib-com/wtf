@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <library>
-	<groupId>com.js-lib</groupId>
+	<groupId>com.js-lib.web</groupId>
 	<artifactId>js-lib</artifactId>
 	<version>1.3.7</version>
 
