@@ -1,0 +1,43 @@
+#if($package)
+#[[$package]]#("${package}");
+
+#end
+/**
+ * Index page class.
+ * 
+ * @author ${author}
+ * @since 1.0
+ * 
+ * @constructor Construct an instance of home page class.
+ */
+#if($package)
+${package}.Index = function() {
+#else
+Index = function() {
+#end
+	#[[this.$super();]]#
+};
+
+#if($package)
+${package}.Index.prototype = {
+#else
+Index.prototype = {
+#end
+	/**
+	 * Class string representation.
+	 * 
+	 * @return {string} this class string representation.
+	 */
+	toString : function() {
+#if($package)	
+		return "${package}.Index";
+#else
+		return "Index";
+#end		
+	}
+};
+#if($package)
+#[[$extends]]#(${package}.Index, ${package}.Page);
+#else
+#[[$extends]]#(Index, Page);
+#end

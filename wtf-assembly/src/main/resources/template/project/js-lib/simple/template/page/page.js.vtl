@@ -1,0 +1,52 @@
+#if($package)
+#[[$package]]#("${package}");
+
+#end
+/**
+ * Pages base class.
+ * 
+ * @author ${author}
+ * @since 1.0
+ * 
+ * @constructor Construct an instance of a page class.
+ */
+#if($package)
+${package}.Page = function() {
+#else
+Page = function() {
+#end
+	#[[this.$super();]]#
+};
+
+#if($package)
+${package}.Page.prototype = {
+#else
+Page.prototype = {
+#end
+	onServerFail(er) {
+#if($package)	
+		#[[$error]]#("${package}.Page#onServerFail", "%s: %s", er.cause, er.message);
+#else		
+		#[[$error]]#("Page#onServerFail", "%s: %s", er.cause, er.message);
+#end		
+		js.ua.System.error("Server error. Please contact administrator.");
+	},
+
+	/**
+	 * Class string representation.
+	 * 
+	 * @return {string} this class string representation.
+	 */
+	toString : function() {
+#if($package)	
+		return "${package}.Page";
+#else		
+		return "Page";
+#end		
+	}
+};
+#if($package)
+#[[$extends]]#(${package}.Page, js.ua.Page);
+#else
+#[[$extends]]#(Page, js.ua.Page);
+#end
