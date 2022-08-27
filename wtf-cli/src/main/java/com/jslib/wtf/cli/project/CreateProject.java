@@ -9,8 +9,8 @@ import com.jslib.commons.cli.ExitCode;
 import com.jslib.commons.cli.Home;
 import com.jslib.commons.cli.Task;
 import com.jslib.commons.cli.TemplateProcessor;
+import com.jslib.util.Strings;
 
-import js.util.Strings;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;

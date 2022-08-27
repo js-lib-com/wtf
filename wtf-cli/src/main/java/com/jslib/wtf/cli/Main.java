@@ -7,13 +7,13 @@ import com.jslib.commons.cli.Config;
 import com.jslib.commons.cli.Console;
 import com.jslib.commons.cli.Home;
 import com.jslib.commons.cli.Task;
+import com.jslib.lang.BugError;
 import com.jslib.wtf.cli.config.ConfigCommands;
 import com.jslib.wtf.cli.config.ConfigList;
 import com.jslib.wtf.cli.icons.CreateIcons;
 import com.jslib.wtf.cli.project.CreateProject;
 import com.jslib.wtf.cli.server.CreateServer;
 
-import js.lang.BugError;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 

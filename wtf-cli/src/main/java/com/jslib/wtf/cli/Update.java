@@ -12,8 +12,8 @@ import com.jslib.commons.cli.Home;
 import com.jslib.commons.cli.IFile;
 import com.jslib.commons.cli.IProgress;
 import com.jslib.commons.cli.Task;
+import com.jslib.format.FileSize;
 
-import js.format.FileSize;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 

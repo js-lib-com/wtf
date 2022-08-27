@@ -1,6 +1,6 @@
 package com.jslib.wtf.cli.icons;
 
-import static com.jslib.tools.AbstractToolProcess.buildCommand;
+import static com.jslib.tools.ToolProcess.buildCommand;
 import static java.lang.String.format;
 
 import java.io.BufferedReader;
@@ -14,9 +14,8 @@ import com.jslib.commons.cli.ExitCode;
 import com.jslib.commons.cli.Task;
 import com.jslib.tools.IResultParser;
 import com.jslib.tools.imagick.ConvertProcess;
-import com.jslib.tools.imagick.ImageMagickProcess;
+import com.jslib.util.Classes;
 
-import js.util.Classes;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -29,7 +28,7 @@ public class CreateIcons extends Task {
 	@Option(names = { "-v", "--verbose" }, description = "Verbose printouts about created files.")
 	private boolean verbose;
 
-	private final ImageMagickProcess convert;
+	private final ConvertProcess convert;
 
 	public CreateIcons() throws IOException {
 		super();
@@ -118,7 +117,7 @@ public class CreateIcons extends Task {
 		String command = buildCommand(parameterizedCommand, args);
 		if (verbose) {
 			console.print(command);
-			convert.setConsole(console);
+			//convert.setConsole(console);
 		}
 		convert.setTimeout(30000L);
 		if (resultType == null) {
